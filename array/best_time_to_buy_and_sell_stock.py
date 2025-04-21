@@ -18,3 +18,20 @@ class Solution:
 
         return max_profit
 
+    """
+    track smallest, largest profit
+    iterate through input arr and replace the smallest and largest profit accordingly
+    """
+        maxProfit: int = 0
+        smallest: int = prices[0]
+        for i in prices[1::]:
+            curr: int = i
+            profit: int = curr-smallest
+            maxProfit = max(profit, maxProfit)
+            smallest = min(curr, smallest)
+        return maxProfit
+
+
+
+
+
