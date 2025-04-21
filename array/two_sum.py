@@ -10,10 +10,19 @@ else, insert curr input value as key and enumerated index as value into dictiona
 """
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
+        """
+        use a dict to store difference between target and indexed value as key, index of value as value
+        enumerate input array and check if diff exits in key of dict
+
+        time complexity: O(N)
+        space complexity: O(2N)
+        """
         mappedArr: dict[int, int] = {}
         for i, n in enumerate(nums):
             diff: int = target-n
             if diff in mappedArr:
-                return [mappedArr[diff],i]
-            else:
-                mappedArr[n]=i
+                return [mappedArr[diff], i]
+            mappedArr[n] = i
+
+
+
