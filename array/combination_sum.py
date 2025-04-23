@@ -30,25 +30,49 @@ class Solution:
         Needcode's notes: visualize the decision tree, base case is curSum = or > target, each candidate can have children of itself or elements to right of it inorder to elim duplicate solutions;
         """
         # global varaible to store the combinations
-        res: list[list[int]]
+        # res: list[list[int]]
+        #
+        # def dfs(i: int, curr: list[int], total: int) -> None:
+        #     # case: when sum==target
+        #     if total==target:
+        #         res.append(curr)
+        #         return
+        #     # case: when sum>target
+        #     if total>target:
+        #         return
+        #     # case: when sum<target, add new candidate into sum stack
+        #     curr.append(candidates[i])
+        #     # update the total, DO NOT update i because you want to add the same candidate in first to check that possibility first
+        #     dfs(i, curr, total+candidates[i])
+        #     # after doing so, pop that candidate
+        #     curr.pop()
+        #     # add the next candidate from that prev stack of candidates - update only i and DO NOT update total because total was defaulted to the previous total from prev stack
+        #     dfs(i+1, curr, total)
+        #
+        # dfs(i=0, curr=[], total=0)
+
+        res: list[list[int]] = []
+        length: int = len(candidates)
 
         def dfs(i: int, curr: list[int], total: int) -> None:
-            # case: when sum==target
-            if total==target:
-                res.append(curr)
+            # case 1: if total == target, append list to res
+            if total == target:
+                res.append(curr.copy())
                 return
-            # case: when sum>target
-            if total>target:
+            # case 2: if total > target, or out of bound( i>= len(candidates) stop recursion
+            if i >= length or total > target:
                 return
-            # case: when sum<target, add new candidate into sum stack
+            # case 3: if total < target,
+            # a. append candidate to curr
             curr.append(candidates[i])
-            # update the total, DO NOT update i because you want to add the same candidate in first to check that possibility first
-            dfs(i, curr, total+candidates[i])
-            # after doing so, pop that candidate
+            dfs(i=i, curr=curr, total=total+candidates[i])
             curr.pop()
-            # add the next candidate from that prev stack of candidates - update only i and DO NOT update total because total was defaulted to the previous total from prev stack
-            dfs(i+1, curr, total)
-        
+
+            dfs(i=i+1, curr=curr, total=total)
+
         dfs(i=0, curr=[], total=0)
+        return res
+
+
 
 
