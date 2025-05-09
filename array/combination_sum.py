@@ -65,7 +65,7 @@ class Solution:
             # case 3: if total < target,
             # a. append candidate to curr
             curr.append(candidates[i])
-            dfs(i=i, curr=curr, total=total+candidates[i])
+            dfs(i=1, curr=curr, total=total+candidates[i])
             curr.pop()
 
             dfs(i=i+1, curr=curr, total=total)
