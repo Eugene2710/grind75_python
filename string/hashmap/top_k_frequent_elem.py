@@ -17,8 +17,8 @@ class Solution:
         for i in nums:
             count[i] = 1 + count.get(i, 0)
         # assign freq as index of list, elem of num as elem of list
-        for n, c in count.values():
-            freq[c].append(n)
+        for num, c in count.values():
+            freq[c].append(num)
 
         res: list[int] = []
         # iterate through list backwards, if elems exits in that index, append to res
