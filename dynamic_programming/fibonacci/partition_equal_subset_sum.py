@@ -1,7 +1,7 @@
 class Solution:
     def canPartition(self, nums: list[int]) -> bool:
         """
-        DP, bottom up
+        0/1 knapsack DP, bottom up
         Iterate through each elem in nums, nested iteration each summed elem list
         and check if elem in summed list == target or elem+summed elem in summed list == target
 

@@ -5,7 +5,7 @@ class Solution:
             5      2      1
           5 2 1.  5
 
-        Fibonacci DP problem: use bottom up approach -
+        0/1 Knapsack family DP problem: use bottom up approach -
         form list of amount+1 (last index is amount) of each elem being amount+1 by default
         iterate from first elem to amount+1 elem: within each amount, iterate through each coin possibility
         if the amount is >= coin possibility: take smallest possibility of each amount index
